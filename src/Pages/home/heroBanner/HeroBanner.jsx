@@ -12,18 +12,18 @@ const HeroBanner = () => {
    const navigate = useNavigate();
    const [background, setBackground] = useState("")
    const [query, setQuery] = useState("")
-   const { url } = useSelector((state) => state.home)
+   const { url } = useSelector((state) => state?.home)
 
    const { data, loading } = Usefetch("/tv/top_rated")
    console.log(data);
 
    useEffect(() => {
-      const bg = url.backdrop + data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path
+      const bg = url?.backdrop + data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path
       setBackground(bg)
    }, [data])
 
    const searchQueryHandler = (event) => {
-      if (event.key == "Enter" && query.length > 0) {
+      if (event?.key == "Enter" && query?.length > 0) {
          navigate(`/search/${query}`)
       }
    }
